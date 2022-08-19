@@ -1,0 +1,34 @@
+How does PID Controller work?
+PID Controller (Proportional Integral Derivative Controller) is a type of controller based on feedback control of a closed loop.
+The basic idea of a PID controller is that it derives a output based on the error between the current and setpoint.
+Since a PID Controller relies on the error between a setpoint and the current one it can work regardless of the outside variables.
+The calculation is as follows:
+
+output = kp * e(t) + kd * de(t)/dt + ki * ∫(from 0 to t) e(t) dt
+
+The kp, kd and ki terms in the equation are the constants that are given as an input to determine the severity of each part of the equation.
+e(t) is a function that gives us the error at time t.
+
+We can divide the equation into 3 different sections to get a better understanding of it.
+
+
+The first section is the: kp * e(t)
+This gives us a directly proportional output (generally referred to as the command)
+We get the error at time t and multiply it by the constants that we chose beforehand.
+
+The second section is the: kd * de(t)/dt
+This give us an output based on the previous error and how rapidly it changed.
+This part is essential for a PID or PD type controller to work and gives the most accuracy.
+The de(t) / dt means that we take the derivative of e(t) which as mentioned before is the error at time t and divide it by the derivative of t.
+For those who do not yet know what a derivative is; it means the infinitesimal change at any given variable.
+This gives us a ratio of growth.
+Then we multiply this by the constant kd for better control.
+
+The third and final section is the: ki * ∫(from 0 to t) e(t) dt
+What this part means is that we take the sum of error e(t) over the changing dt
+This helps us to correct over time the small overshoots as the sum of e(t) constantly gets larger as the overshoot becomes more
+Finally; the ki refers to the constants which was already established.
+
+There are other controllers such as P Controller, PD Controller and such but PID Controller is generally a more renowned controller of the bunch.
+There are also other types of feedback controllers some more complex than others (For example the Model predictive control (MPC) is much more complex but also much more viable as it allows for predictions)
+It's important to remember PID can't predict and give an outcome accordingly.
